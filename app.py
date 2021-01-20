@@ -66,7 +66,7 @@ df=df_ev
 
 ########### Initiate the app
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-external_stylesheets = ['https://raw.githubusercontent.com/plotly/dash-app-stylesheets/master/dash-uber-ride-demo.css']
+external_stylesheets = ['https://codepen.io/chriddyp/pen/dZVMbK.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
