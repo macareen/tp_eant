@@ -40,7 +40,9 @@ EV2.COMUNA[(EV2['COMUNA']==0)]=8
 ev_area = pd.DataFrame({'area' : EV2.groupby(['BARRIO'])['area'].sum()}).reset_index() 
 prop = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3eGbDe7NfdHvtbut0lcTNRxRzbn_UfmNCm9h5DyKfRTBQ3pUwgGgsraeB2WY-TYYvlxwA7NQxv_tI/pub?output=csv",sep=';', error_bad_lines=False)
 precio_ev_barrio = ev_area.merge(prop, left_on='BARRIO', right_on='barrio')
+precio_ev_barrio["comuna"] = precio_ev_barrio.comuna.astype("category")
 df_ev = precio_ev_barrio.sort_values('comuna', ascending=True)
+
 figura1 = px.scatter(df_ev, x="precio_prom", y="area", color="comuna", hover_data=['barrio'],
                  labels={
                      
@@ -63,7 +65,9 @@ prop =px.bar(data_frame=temp,x='barrio',y='precio_prom',
 df=df_ev
 
 ########### Initiate the app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+#external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets = ['https://raw.githubusercontent.com/plotly/dash-app-stylesheets/master/dash-uber-ride-demo.css']
+
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 #app.title=tabtitle
