@@ -103,7 +103,7 @@ app.layout = html.Div([
 
         ]), 
             
-        dcc.Tab(id='Tab2', label='Mapa', children=[html.Iframe(id='map',src="mapa.html",width='50%',height='600')]),
+        dcc.Tab(id='Tab2', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600')]),
     
         dcc.Tab(id='Tab4', label='Conclusiones', children=[html.P("texto conclusiones")])
     ])
