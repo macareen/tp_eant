@@ -15,11 +15,11 @@ import requests
 from bs4 import BeautifulSoup
 
 
-EVGJ=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/espacios-verdes/espacio-verde-publico.geojson").text)
+#EVGJ=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/espacios-verdes/espacio-verde-publico.geojson").text)
 
-metrobus2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/metrobus/recorrido-de-metrobus.geojson").text)
+#metrobus2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/metrobus/recorrido-de-metrobus.geojson").text)
 
-subtes2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/subte-estaciones/subte_lineas.geojson").text)
+#subtes2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/subte-estaciones/subte_lineas.geojson").text)
 
 subterraneos = pd.read_csv('https://raw.githubusercontent.com/Etie935/Movilidad/main/estaciones-de-subte%20(1).csv', sep=',')
 
@@ -29,9 +29,8 @@ estaciones_metro=pd.read_csv('https://raw.githubusercontent.com/Etie935/Movilida
 
 metrobus = estaciones_metro[['WKT','ID','NOMBRE','METROBUS']]
 
-EV=pd.read_csv("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/espacios-verdes/espacio-verde-publico.csv",sep=',')
-#EV['WKT'] = EV['WKT'].apply(wkt.loads)
-EV2 = EV[['WKT','nombre_ev','BARRIO','COMUNA','clasificac','area']]
+EV2=pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSYlWKbAAgTztOZm7PmhCNAuM3BLCORHNfJEKmiGNbRieL-TVtBx9hfaBMv2bVLGaSHfrw2Oa_SoukJ/pub?output=csv",sep=',')
+
 
 
 
