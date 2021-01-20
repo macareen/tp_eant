@@ -1,7 +1,18 @@
+import os
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
+from dash.dependencies import Input,Output,State
+import dash_table
+import pandas as pd
+from datetime import date
+import plotly.express as px
+#import numpy as np
+import folium 
+import json
+import requests
+from bs4 import BeautifulSoup
 
 ########### Define your variables
 beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
