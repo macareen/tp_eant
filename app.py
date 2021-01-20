@@ -14,6 +14,56 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
+
+EVGJ=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/espacios-verdes/espacio-verde-publico.geojson").text)
+
+metrobus2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/metrobus/recorrido-de-metrobus.geojson").text)
+
+subtes2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/subte-estaciones/subte_lineas.geojson").text)
+
+subterraneos = pd.read_csv('https://raw.githubusercontent.com/Etie935/Movilidad/main/estaciones-de-subte%20(1).csv', sep=',')
+
+estaciones_metro=pd.read_csv('https://raw.githubusercontent.com/Etie935/Movilidad/main/estaciones-de-metrobus.csv', sep=',')
+
+#estaciones_metro['WKT']=estaciones_metro['WKT'].apply(wkt.loads)
+
+metrobus = estaciones_metro[['WKT','ID','NOMBRE','METROBUS']]
+
+EV=pd.read_csv("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/espacios-verdes/espacio-verde-publico.csv",sep=',')
+#EV['WKT'] = EV['WKT'].apply(wkt.loads)
+EV2 = EV[['WKT','nombre_ev','BARRIO','COMUNA','clasificac','area']]
+
+
+
+#grafico ev/prop
+EV2.COMUNA[(EV2['COMUNA']==0) & (EV2['clasificac'].str.contains("PARQUE", na=False))]=1
+EV2.COMUNA[(EV2['COMUNA']==0)]=8
+ev_area = pd.DataFrame({'area' : EV2.groupby(['BARRIO'])['area'].sum()}).reset_index() 
+prop = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3eGbDe7NfdHvtbut0lcTNRxRzbn_UfmNCm9h5DyKfRTBQ3pUwgGgsraeB2WY-TYYvlxwA7NQxv_tI/pub?output=csv",sep=';', error_bad_lines=False)
+precio_ev_barrio = ev_area.merge(prop, left_on='BARRIO', right_on='barrio')
+df_ev = precio_ev_barrio.sort_values('comuna', ascending=True)
+figura1 = px.scatter(df_ev, x="precio_prom", y="area", color="comuna", hover_data=['barrio'],
+                 labels={
+                     
+                     "precio_prom": "Precio Promedio del m2 (USD)" ,
+                     "area": "Área de Espacio Verde Público"
+                 },
+                title="Precio promedio según área verde en la comuna")
+
+
+#propiedades
+df_prop=pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vRzwQsqjwFPZXeXiwVkLFhwwHqbdptFCkhYEL8yJgBFjSOolnpmOgLtShfakV1uf_LnOh1-Cq6O8uyk/pub?output=csv',sep=",")
+temp=df_prop.groupby(['año','ambientes','barrio'],as_index=False).precio_prom.mean()
+
+prop =px.bar(data_frame=temp,x='barrio',y='precio_prom', 
+           color='ambientes',
+           animation_frame='año',
+           animation_group='barrio',
+           barmode='group')
+
+df=df_ev
+
+
 ########### Define your variables
 beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
 ibu_values=[35, 60, 85, 75]
