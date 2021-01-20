@@ -15,11 +15,11 @@ import requests
 from bs4 import BeautifulSoup
 
 
-EVGJ=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/espacios-verdes/espacio-verde-publico.geojson").text)
+#EVGJ=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/espacios-verdes/espacio-verde-publico.geojson").text)
 
-metrobus2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/metrobus/recorrido-de-metrobus.geojson").text)
+#metrobus2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/metrobus/recorrido-de-metrobus.geojson").text)
 
-subtes2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/subte-estaciones/subte_lineas.geojson").text)
+#subtes2=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/subte-estaciones/subte_lineas.geojson").text)
 
 subterraneos = pd.read_csv('https://raw.githubusercontent.com/Etie935/Movilidad/main/estaciones-de-subte%20(1).csv', sep=',')
 
@@ -103,7 +103,7 @@ app.layout = html.Div([
 
         ]), 
             
-        dcc.Tab(id='Tab2', label='Mapa', children=[html.Iframe(id='map',src="https://raw.githubusercontent.com/macareen/tp_eant/master/mapa.html",width='50%',height='600')]),
+        dcc.Tab(id='Tab2', label='Mapa', children=[html.Iframe(id='map',src="mapa.html",width='50%',height='600')]),
     
         dcc.Tab(id='Tab4', label='Conclusiones', children=[html.P("texto conclusiones")])
     ])
