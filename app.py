@@ -9,7 +9,7 @@ import pandas as pd
 from datetime import date
 import plotly.express as px
 #import numpy as np
-import folium 
+#import folium 
 import json
 import requests
 from bs4 import BeautifulSoup
