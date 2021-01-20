@@ -62,62 +62,74 @@ prop =px.bar(data_frame=temp,x='barrio',y='precio_prom',
 
 df=df_ev
 
-
-########### Define your variables
-beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
-ibu_values=[35, 60, 85, 75]
-abv_values=[5.4, 7.1, 9.2, 4.3]
-color1='darkred'
-color2='orange'
-mytitle='Beer Comparison'
-tabtitle='beer!'
-myheading='Flying Dog Beers'
-label1='IBU'
-label2='ABV'
-githublink='https://github.com/austinlasseter/flying-dog-beers'
-sourceurl='https://www.flyingdog.com/beers/'
-
-########### Set up the chart
-bitterness = go.Bar(
-    x=beers,
-    y=ibu_values,
-    name=label1,
-    marker={'color':color1}
-)
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
-    name=label2,
-    marker={'color':color2}
-)
-
-beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
-    barmode='group',
-    title = mytitle
-)
-
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
-
-
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
-app.title=tabtitle
+#app.title=tabtitle
+
+response = 'https://drive.google.com/file/d/1BwXBDKhby2vf56hLB5VP8hAlX3ZWFAuV'
+#soup=BeautifulSoup(open(response,encoding='utf-8'),'html.parser')
 
 ########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(myheading),
-    dcc.Graph(
-        id='flyingdog',
-        figure=beer_fig
-    ),
-    html.A('Code on Github', href=githublink),
-    html.Br(),
-    html.A('Data Source', href=sourceurl),
-    ]
+app.layout = html.Div([
+    html.H1('Precio de las propiedades en CABA: Cuál es el factor que más influye?'), 
+        dcc.Tabs
+    ([
+        dcc.Tab(id='Tab1', label='Introducción',  children=
+                [dcc.Markdown('''
+                  A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. 
+                  Es posible que nos guiemos por buscar en la zona en la que crecimos, o la que nos queda más cerca del trabajo. 
+                  El precio suele ser un factor clave, tanto a la hora de comprar como de elegir un alquiler, 
+                  pero a su vez el mismo se ve influenciado por otras cuestiones, que no siempre resultan claras, 
+                  y que muchas veces dificultan la elección al presentar disyuntivas.
+                  En este trabajo, realizado en el marco del curso Python Data Analytics de la Escuela Argentina de Nuevas Tecnologías [(EANT) ](https://eant.tech/escuela-de-ciencias-de-datos) 
+                  y utilizando los [datos abiertos del Gobierno de la Ciudad de Buenos Aires](https://data.buenosaires.gob.ar/), 
+                  proponemos que dos de los factores que influencian el valor de las propiedades de dos y tres ambientes de la Ciudad Autónoma de Buenos Aires 
+                  son los medios de transporte disponibles y el fácil acceso a espacios verdes públicos como parques y plazas.
+                  ''')]),
+        dcc.Tab(id='Tab3', label='Gráficos',  children=[
+
+
+            dcc.Dropdown(
+                    id="drop_ev_amb",
+                    value=df.ambientes.unique()[0],
+                    options=[
+                        {"label": col, "value": col} for col in df.ambientes.unique()
+                    ]
+                ),
+            dcc.Graph(id='graph_1',figure=figura1),
+            dcc.Graph(id='graph_2',figure=prop)
+
+        ]), 
+            
+        #dcc.Tab(id='Tab2', label='Mapa', children=[html.Iframe(id='map',src="mapa.html",width='50%',height='600')]),
+    
+        dcc.Tab(id='Tab4', label='Conclusiones', children=[html.P("texto conclusiones")])
+    ])
+
+        
+]) 
+
+@app.callback(
+    Output(component_id='graph_1', component_property='figure'),
+    [Input(component_id='drop_ev_amb', component_property='value')]
 )
+
+
+def update_fig(selected_value):
+    
+    figura1 = px.scatter(df[df['ambientes'].isin(selected_value)],
+                     x='precio_prom', 
+                     y='area', 
+                     color='comuna',
+                     color_discrete_map=color_discrete_map,
+                     hover_name='barrio')
+
+    return figura1
+
+
+
 
 if __name__ == '__main__':
     app.run_server()
