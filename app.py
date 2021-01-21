@@ -106,6 +106,7 @@ dcc.Tabs
       
       
         dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600'),
+                                                   html.Iframe(id='map2',srcDoc=open('mapa3.html','r').read(),width='50%',height='600'),
                                                   
                                                   dash_table.DataTable(
     id='table',
