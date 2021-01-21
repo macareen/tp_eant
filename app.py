@@ -13,6 +13,7 @@ import folium
 import json
 import requests
 from bs4 import BeautifulSoup
+import base64
 
 
 #EVGJ=json.loads(requests.get("https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/espacios-verdes/espacio-verde-publico.geojson").text)
@@ -74,10 +75,11 @@ server = app.server
 
 response = 'https://drive.google.com/file/d/1BwXBDKhby2vf56hLB5VP8hAlX3ZWFAuV'
 #soup=BeautifulSoup(open(response,encoding='utf-8'),'html.parser')
-
+encoded_image = base64.b64encode(open("undraw_best_place_r685.png", 'rb').read()
 ########### Set up the layout
 app.layout = html.Div([
-  html.Img(src=app.get_asset_url('undraw_Web_search_re_efla.png'), style={'height':'10%', 'width':'10%'})),
+  html.Img(src='data:image/png;base64,{}'.format(encoded_image)),
+  #html.Img(src=app.get_asset_url('undraw_Web_search_re_efla.png'), style={'height':'10%', 'width':'10%'})),
     html.H1('Precio de las propiedades en CABA: Cuál es el factor que más influye?'), 
         dcc.Tabs
     ([
