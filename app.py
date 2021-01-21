@@ -51,6 +51,9 @@ precio_ev_barrio2 = ev_area2.merge(prop2, left_on='COMUNA', right_on='comuna')
 precio_ev_barrio2["comuna"] = precio_ev_barrio2.comuna.astype("category")
 df_ev2 = precio_ev_barrio2.sort_values('comuna', ascending=True)
 df_ev2=df_ev2[['comuna','area','precio_prom']]
+df_ev2['area']=round(df_ev2['area'],0)
+df_ev2['precio_prom']=round(df_ev2['precio_prom'],0)
+df_ev2 = precio_ev_barrio2.sort_values('area', ascending=True)
 
 figura1 = px.scatter(df_ev, x="precio_prom", y="area", color="comuna", hover_data=['barrio'],
                  labels={
@@ -92,7 +95,8 @@ app.layout = html.Div([
 dcc.Tabs
     ([
         dcc.Tab(id='Tab1', label='Introducción',  children=
-                [dcc.Markdown('''
+                [ html.Img(src=app.get_asset_url('undraw_map_1r69.png'), style={'height':'40%', 'width':'40%'}),
+                 dcc.Markdown('''
                   A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. 
                   Es posible que nos guiemos por buscar en la zona en la que crecimos, o la que nos queda más cerca del trabajo. 
                   El precio suele ser un factor clave, tanto a la hora de comprar como de elegir un alquiler, 
@@ -111,7 +115,7 @@ dcc.Tabs
                                                   dash_table.DataTable(
     id='table',
     columns=[{"name": i, "id": i} for i in df_ev2.columns],
-    data=df_ev2.to_dict('records'),
+    data=df_ev2.to_dict('records'),sort_action='native',filter_action='native',
 )]),
         dcc.Tab(id='Tab2', label='Gráficos',  children=[
 
