@@ -78,13 +78,14 @@ response = 'https://drive.google.com/file/d/1BwXBDKhby2vf56hLB5VP8hAlX3ZWFAuV'
 #encoded_image = base64.b64encode(open(undraw_best_place_r685.png, 'rb')).read()
 ########### Set up the layout
 app.layout = html.Div([
-  html.Img(src=app.get_asset_url('undraw_best_place_r685.png')),
+  
   #html.Img(src=app.get_asset_url('undraw_Web_search_re_efla.png'), style={'height':'10%', 'width':'10%'})),
     html.H1('Precio de las propiedades en CABA: Cuál es el factor que más influye?'), 
         dcc.Tabs
     ([
         dcc.Tab(id='Tab1', label='Introducción',  children=
-                [dcc.Markdown('''
+                [html.Img(src=app.get_asset_url('undraw_best_place_r685.png'), style={'height':'10%', 'width':'10%'}),
+                  dcc.Markdown('''
                   A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. 
                   Es posible que nos guiemos por buscar en la zona en la que crecimos, o la que nos queda más cerca del trabajo. 
                   El precio suele ser un factor clave, tanto a la hora de comprar como de elegir un alquiler, 
@@ -114,12 +115,15 @@ app.layout = html.Div([
             
         
     
-        dcc.Tab(id='Tab4', label='Conclusiones', children=[html.P(
+        dcc.Tab(id='Tab4', label='Conclusiones', children=[
+          
+          html.P(
           '''De acuerdo al análisis de datos realizados, hemos llegado a la siguiente conclusión:
           Con la extensión geográfica de la Ciudad de Buenos Aires, residir en un barrio con acceso a medios de transportes y zonas verdes tiende a encarecer los costos por metros cuadrados de la vivienda. Esto hace que, vivir en zonas que no tengan buena movilidad o espacios verdes cercanos, impliquen otros costos cotidianos. Con nuestro trabajo buscamos brindar una herramienta que nos permita proyectar y estimar cuáles son los alcances que tenemos en los diferentes barrios de CABA y cuál resultará mejor para vivir o invertir, dependiendo de las posibilidades individuales.
           Por último, queremos agradecer a EANT por la oportunidad de desarrollar esta herramienta, y al Gobierno de la Ciudad Autónoma de Buenos Aires por proporcionarnos los dataset para su elaboración.
           Macarena Roel, Aidín Rodriguez, Etie Bolognese.
-          ''')])
+          '''),
+        html.Img(src=app.get_asset_url('undraw_tourist_map_re_293e.png'), style={'height':'10%', 'width':'10%'})])
     ])
 
         
