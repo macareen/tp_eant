@@ -115,7 +115,7 @@ dcc.Tabs
                                                   dash_table.DataTable(
     id='table',
     columns=[{"name": i, "id": i} for i in df_ev2.columns],
-    data=df_ev2.to_dict('records'),sort_action='native',filter_action='native',
+    data=df_ev2.to_dict('records'),sort_action='native',
 )]),
         dcc.Tab(id='Tab2', label='Gráficos',  children=[
 
