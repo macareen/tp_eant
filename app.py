@@ -108,7 +108,7 @@ app.layout = html.Div([
                         {"label": col, "value": col} for col in df.ambientes.unique()
                     ]
                 ),
-            dcc.Graph(id='graph_1',figure=figura1),
+            dcc.Graph(id='graph_1'),
             dcc.Graph(id='graph_2',figure=prop)
 
         ]), 
@@ -130,7 +130,7 @@ app.layout = html.Div([
 ]) 
 
 @app.callback(
-    Output(component_id='graph_1', component_property='figure'),
+    Output(component_id='graph_1', component_property='children'),
     [Input(component_id='drop_ev_amb', component_property='value')]
 )
 
