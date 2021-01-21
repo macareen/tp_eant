@@ -92,7 +92,9 @@ app.layout = html.Div([
                   proponemos que dos de los factores que influencian el valor de las propiedades de dos y tres ambientes de la Ciudad Autónoma de Buenos Aires 
                   son los medios de transporte disponibles y el fácil acceso a espacios verdes públicos como parques y plazas.
                   ''')]),
-        dcc.Tab(id='Tab3', label='Gráficos',  children=[
+      
+        dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600')]),
+        dcc.Tab(id='Tab2', label='Gráficos',  children=[
 
 
             dcc.Dropdown(
@@ -107,9 +109,14 @@ app.layout = html.Div([
 
         ]), 
             
-        dcc.Tab(id='Tab2', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600')]),
+        
     
-        dcc.Tab(id='Tab4', label='Conclusiones', children=[html.P("texto conclusiones")])
+        dcc.Tab(id='Tab4', label='Conclusiones', children=[html.P(
+          '''De acuerdo al análisis de datos realizados, hemos llegado a la siguiente conclusión:
+          Con la extensión geográfica de la Ciudad de Buenos Aires, residir en un barrio con acceso a medios de transportes y zonas verdes tiende a encarecer los costos por metros cuadrados de la vivienda. Esto hace que, vivir en zonas que no tengan buena movilidad o espacios verdes cercanos, impliquen otros costos cotidianos. Con nuestro trabajo buscamos brindar una herramienta que nos permita proyectar y estimar cuáles son los alcances que tenemos en los diferentes barrios de CABA y cuál resultará mejor para vivir o invertir, dependiendo de las posibilidades individuales.
+          Por último, queremos agradecer a EANT por la oportunidad de desarrollar esta herramienta, y al Gobierno de la Ciudad Autónoma de Buenos Aires por proporcionarnos los dataset para su elaboración.
+          Macarena Roel, Aidín Rodriguez, Etie Bolognese.
+          ''')])
     ])
 
         
