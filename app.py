@@ -80,11 +80,11 @@ response = 'https://drive.google.com/file/d/1BwXBDKhby2vf56hLB5VP8hAlX3ZWFAuV'
 app.layout = html.Div([
   
   html.Img(src=app.get_asset_url('undraw_best_place_r685.png'), style={'height':'30%', 'width':'70%'}),
-    html.H1('Precio de las propiedades en CABA: Cuál es el factor que más influye?'), 
+    html.H1('Precio de las propiedades en CABA: Qué factores influyen?'), 
         dcc.Tabs
     ([
         dcc.Tab(id='Tab1', label='Introducción',  children=
-                            [html.Div([
+                            [html.Img(src=app.get_asset_url('undraw_elements_team.png'), style={'height':'40%', 'width':'40%'}),html.Div([
                 dcc.Markdown('''
                   A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. 
                   Es posible que nos guiemos por buscar en la zona en la que crecimos, o la que nos queda más cerca del trabajo. 
@@ -108,11 +108,11 @@ app.layout = html.Div([
                 
                 # Añadimos un dropdown, 
                 # (las opciones para seleccionar son los valores únicos de las empresas de nuestro df)
-                dcc.Dropdown(id='dropdown_empresa', 
-                             options=[{'label': i, 'value': i} for i in df.ambientes.unique()],
-                             multi=True,
-                             value=['2 ambientes','3 ambientes'],
-                             clearable=False),
+                #dcc.Dropdown(id='dropdown_empresa', 
+                             #options=[{'label': i, 'value': i} for i in df.ambientes.unique()],
+                            # multi=True,
+                            # value=['2 ambientes','3 ambientes'],
+                             #clearable=False),
     dcc.Graph(id='graph_1', figure=figura1)
 ]),
             
