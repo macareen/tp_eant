@@ -53,7 +53,7 @@ df_ev2 = precio_ev_barrio2.sort_values('comuna', ascending=True)
 df_ev2=df_ev2[['comuna','area','precio_prom']]
 df_ev2['area']=round(df_ev2['area'],0)
 df_ev2['precio_prom']=round(df_ev2['precio_prom'],0)
-df_ev2 = precio_ev_barrio2.sort_values('area', ascending=True)
+df_ev2 = df_ev2.sort_values('area', ascending=True)
 
 figura1 = px.scatter(df_ev, x="precio_prom", y="area", color="comuna", hover_data=['barrio'],
                  labels={
