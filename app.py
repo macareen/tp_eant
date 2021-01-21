@@ -75,7 +75,7 @@ server = app.server
 
 response = 'https://drive.google.com/file/d/1BwXBDKhby2vf56hLB5VP8hAlX3ZWFAuV'
 #soup=BeautifulSoup(open(response,encoding='utf-8'),'html.parser')
-encoded_image = base64.b64encode(open("undraw_best_place_r685.png", 'rb').read()
+encoded_image = base64.b64encode(open("undraw_best_place_r685.png", 'rb')).read()
 ########### Set up the layout
 app.layout = html.Div([
   html.Img(src='data:image/png;base64,{}'.format(encoded_image)),
