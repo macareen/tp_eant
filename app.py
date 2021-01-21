@@ -79,7 +79,7 @@ response = 'https://drive.google.com/file/d/1BwXBDKhby2vf56hLB5VP8hAlX3ZWFAuV'
 ########### Set up the layout
 app.layout = html.Div([
   
-  html.Img(src=app.get_asset_url('undraw_best_place_r685.png'), style={'height':'50%', 'width':'120%'}),
+  html.Img(src=app.get_asset_url('undraw_best_place_r685.png'), style={'height':'30%', 'width':'70%'}),
     html.H1('Precio de las propiedades en CABA: Cuál es el factor que más influye?'), 
         dcc.Tabs
     ([
