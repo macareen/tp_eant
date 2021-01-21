@@ -79,12 +79,12 @@ response = 'https://drive.google.com/file/d/1BwXBDKhby2vf56hLB5VP8hAlX3ZWFAuV'
 ########### Set up the layout
 app.layout = html.Div([
   
-  #html.Img(src=app.get_asset_url('undraw_Web_search_re_efla.png'), style={'height':'10%', 'width':'10%'})),
+  html.Img(src=app.get_asset_url('undraw_Web_search_re_efla.png'), style={'height':'80%', 'width':'80%'})),
     html.H1('Precio de las propiedades en CABA: Cuál es el factor que más influye?'), 
         dcc.Tabs
     ([
         dcc.Tab(id='Tab1', label='Introducción',  children=
-                [html.Img(src=app.get_asset_url('undraw_best_place_r685.png'), style={'height':'10%', 'width':'10%'}),
+                [html.Img(src=app.get_asset_url('undraw_map_1r69.png'), style={'height':'50%', 'width':'50%'}),
                   dcc.Markdown('''
                   A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. 
                   Es posible que nos guiemos por buscar en la zona en la que crecimos, o la que nos queda más cerca del trabajo. 
@@ -123,7 +123,7 @@ app.layout = html.Div([
           Por último, queremos agradecer a EANT por la oportunidad de desarrollar esta herramienta, y al Gobierno de la Ciudad Autónoma de Buenos Aires por proporcionarnos los dataset para su elaboración.
           Macarena Roel, Aidín Rodriguez, Etie Bolognese.
           '''),
-        html.Img(src=app.get_asset_url('undraw_tourist_map_re_293e.png'), style={'height':'10%', 'width':'10%'})])
+        html.Img(src=app.get_asset_url('undraw_tourist_map_re_293e.png'), style={'height':'50%', 'width':'50%'})])
     ])
 
         
