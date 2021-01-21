@@ -133,20 +133,7 @@ dcc.Tabs
         
 ]) 
 
-@app.callback(
-    Output(component_id='graph_1', component_property='figure'),
-    [Input(component_id='dropdown_empresa', component_property='value')]
-)
-def update_fig(selected_value):
-    px.scatter(df_ev, x="precio_prom", y="area", color="comuna", hover_data=['barrio'],
-                 labels={
-                     
-                     "precio_prom": "Precio Promedio del m2 (USD)" ,
-                     "area": "Área de Espacio Verde Público"
-                 },
-                title="Precio promedio según área verde en la comuna")
 
-    return figura1
 
 
 if __name__ == '__main__':
