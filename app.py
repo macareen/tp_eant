@@ -77,6 +77,7 @@ response = 'https://drive.google.com/file/d/1BwXBDKhby2vf56hLB5VP8hAlX3ZWFAuV'
 
 ########### Set up the layout
 app.layout = html.Div([
+  html.Img(src=app.get_asset_url('undraw_Web_search_re_efla.png'), style={'height':'10%', 'width':'10%'})),
     html.H1('Precio de las propiedades en CABA: Cuál es el factor que más influye?'), 
         dcc.Tabs
     ([
