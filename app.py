@@ -39,10 +39,18 @@ EV2=pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSYlWKbAAgTztOZ
 EV2.COMUNA[(EV2['COMUNA']==0) & (EV2['clasificac'].str.contains("PARQUE", na=False))]=1
 EV2.COMUNA[(EV2['COMUNA']==0)]=8
 ev_area = pd.DataFrame({'area' : EV2.groupby(['BARRIO'])['area'].sum()}).reset_index() 
+ev_area2 = pd.DataFrame({'area' : EV2.groupby(['COMUNA'])['area'].sum()}).reset_index() 
 prop = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3eGbDe7NfdHvtbut0lcTNRxRzbn_UfmNCm9h5DyKfRTBQ3pUwgGgsraeB2WY-TYYvlxwA7NQxv_tI/pub?output=csv",sep=';', error_bad_lines=False)
+
 precio_ev_barrio = ev_area.merge(prop, left_on='BARRIO', right_on='barrio')
 precio_ev_barrio["comuna"] = precio_ev_barrio.comuna.astype("category")
 df_ev = precio_ev_barrio.sort_values('comuna', ascending=True)
+
+prop2=prop.groupby(["comuna"],as_index=False).mean()
+precio_ev_barrio2 = ev_area2.merge(prop2, left_on='COMUNA', right_on='comuna')
+precio_ev_barrio2["comuna"] = precio_ev_barrio2.comuna.astype("category")
+df_ev2 = precio_ev_barrio2.sort_values('comuna', ascending=True)
+df_ev2=df_ev2[['comuna','area','precio_prom']]
 
 figura1 = px.scatter(df_ev, x="precio_prom", y="area", color="comuna", hover_data=['barrio'],
                  labels={
@@ -97,7 +105,13 @@ dcc.Tabs
                   ''')]),
       
       
-        dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600')]),
+        dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600'),
+                                                  
+                                                  dash_table.DataTable(
+    id='table',
+    columns=[{"name": i, "id": i} for i in df_ev2.columns],
+    data=df_ev2.to_dict('records'),
+)]),
         dcc.Tab(id='Tab2', label='Gráficos',  children=[
 
               html.Div([
