@@ -103,15 +103,19 @@ app.layout = html.Div([
         dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600')]),
         dcc.Tab(id='Tab2', label='Gráficos',  children=[
 
-
-            dcc.Dropdown(
-                    id="drop_ev_amb",
-                    value=df.ambientes.unique(),
-                    options=[
-                        {"label": col, "value": col} for col in df.ambientes.unique()
-                    ]
-                ),
-            dcc.Graph(id='graph_1',figure=figura1),
+              html.Div([
+                 
+                
+                # Añadimos un dropdown, 
+                # (las opciones para seleccionar son los valores únicos de las empresas de nuestro df)
+                dcc.Dropdown(id='dropdown_empresa', 
+                             options=[{'label': i, 'value': i} for i in df.ambientes.unique()],
+                             multi=True,
+                             value=['2 ambientes','3 ambientes'],
+                             clearable=False),
+    dcc.Graph(id='graph_1', figure=figura1)
+]),
+            
             dcc.Graph(id='graph_2',figure=prop)
 
         ]), 
@@ -131,23 +135,6 @@ app.layout = html.Div([
 
         
 ]) 
-
-@app.callback(
-    Output(component_id='graph_1', component_property='figure'),
-    [Input(component_id='drop_ev_amb', component_property='value')]
-)
-
-
-def update_fig(selected_value):
-    
-    figura1 = px.scatter(df[df['ambientes'].isin(selected_value)],
-                     x='precio_prom', 
-                     y='area', 
-                     color='comuna',
-                     color_discrete_map=color_discrete_map,
-                     hover_name='barrio')
-
-    return figura1
 
 
 
