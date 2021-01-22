@@ -1,9 +1,6 @@
-# How to deploy a simple Plotly Dash app on Heroku
+# Precio de las propiedades en CABA: Qué factores influyen?
 
-* You can view the finished app on [Heroku](https://flying-dog.herokuapp.com/).
-* Take a moment to read my [Medium post about deploying Dash apps](https://medium.com/@austinlasseter/how-to-deploy-a-simple-plotly-dash-app-to-heroku-622a2216eb73).
-* I also have a gallery of simple Dash apps for learning [here](https://github.com/austinlasseter/plotly_dash_tutorial/blob/master/06%20Heroku%20examples/list%20of%20resources.md).
-* If you'd like to learn even more about Plotly Dash, check out my [tutorial repo](https://github.com/austinlasseter/plotly_dash_tutorial) on github!.
-* If you'd like to tinker with the colors of your app, try using HEX codes from [HTML Color Codes](https://htmlcolorcodes.com/).
-* The `assets` folder contains a file called `favicon.ico` -- you can find and download customized favicons [here](https://www.favicon.cc/). Just replace the current favicon with a new one.
-* Plotly Dash apps can only be viewed in a modern browser (like Chrome or Mozilla). They won't render in antediluvian browsers such as Microsoft.
+
+A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. Es posible que nos guiemos por buscar en la zona en la que crecimos, o la que nos queda más cerca del trabajo. El precio suele ser un factor clave, tanto a la hora de comprar como de elegir un alquiler, pero a su vez el mismo se ve influenciado por otras cuestiones, que no siempre resultan claras, y que muchas veces dificultan la elección al presentar disyuntivas. En este trabajo, realizado en el marco del curso Python Data Analytics de la Escuela Argentina de Nuevas Tecnologías (EANT) y utilizando los datos abiertos del Gobierno de la Ciudad de Buenos Aires, proponemos que dos de los factores que influencian el valor de las propiedades de dos y tres ambientes de la Ciudad Autónoma de Buenos Aires son los medios de transporte disponibles y el fácil acceso a espacios verdes públicos como parques y plazas.
+
+Proyecto realizado por Etie Bolognese, Aidín Rodriguez y Macarena Roel
