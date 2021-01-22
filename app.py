@@ -128,10 +128,10 @@ dcc.Tabs
                 html.Div([], className='one columns'),
                  
                 html.Div([
-                    html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600')
+                    html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='100%',height='600')
                     
                 ], className='five columns',style={'border':'0px black solid'}), 
-              html.Div([html.Iframe(id='map2',srcDoc=open('mapa3.html','r').read(),width='50%',height='600')], className='five columns', style={'border':'0px black solid'}),
+              html.Div([html.Iframe(id='map2',srcDoc=open('mapa3.html','r').read(),width='100%',height='600')], className='five columns', style={'border':'0px black solid'}),
                 html.Div([], className='one columns'),
              
             ]),
