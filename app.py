@@ -100,7 +100,7 @@ dcc.Tabs
             html.Div([
                 html.Div([], className='one columns'),
                 html.Div([html.Img(src=app.get_asset_url('undraw_map_1r69.png'), 
-                                   style={'height':'40%', 'width':'40%'})], className='five columns', style={'border':'1px black solid'}), 
+                                   style={'height':'100%', 'width':'100%'})], className='five columns', style={'border':'0px black solid'}), 
                 html.Div([
                     dcc.Markdown('''
                                           A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. 
@@ -115,7 +115,7 @@ dcc.Tabs
                                        
                                           ''')
                     
-                ], className='five columns',style={'border':'1px black solid'}), 
+                ], className='five columns',style={'border':'0px black solid'}), 
                 html.Div([], className='one columns'),
             ])
         ]),
@@ -149,15 +149,27 @@ dcc.Tabs
             
         
     
-        dcc.Tab(id='Tab4', label='Conclusiones', children=[
-          
-          html.P(
-          '''De acuerdo al análisis de datos realizados, hemos llegado a la siguiente conclusión:
+
+      dcc.Tab(id='Tab4', label='Conclusión',  children=[
+            html.H1('Conclusión'),
+            html.Div([
+                html.Div([], className='one columns'),
+                 
+                html.Div([
+                    dcc.Markdown('''De acuerdo al análisis de datos realizados, hemos llegado a la siguiente conclusión:
           Con la extensión geográfica de la Ciudad de Buenos Aires, residir en un barrio con acceso a medios de transportes y zonas verdes tiende a encarecer los costos por metros cuadrados de la vivienda. Esto hace que, vivir en zonas que no tengan buena movilidad o espacios verdes cercanos, impliquen otros costos cotidianos. Con nuestro trabajo buscamos brindar una herramienta que nos permita proyectar y estimar cuáles son los alcances que tenemos en los diferentes barrios de CABA y cuál resultará mejor para vivir o invertir, dependiendo de las posibilidades individuales.
           Por último, queremos agradecer a EANT por la oportunidad de desarrollar esta herramienta, y al Gobierno de la Ciudad Autónoma de Buenos Aires por proporcionarnos los dataset para su elaboración.
-          Macarena Roel, Aidín Rodriguez, Etie Bolognese.
-          '''),
-        html.Img(src=app.get_asset_url('undraw_tourist_map_re_293e.png'), style={'height':'40%', 'width':'40%'})])
+         
+         Macarena Roel, Aidín Rodriguez, Etie Bolognese.
+          ''')
+                    
+                ], className='five columns',style={'border':'0px black solid'}), 
+              html.Div([html.Img(src=app.get_asset_url('undraw_tourist_map_re_293e.png'), 
+                                   style={'height':'100%', 'width':'100%'})], className='five columns', style={'border':'0px black solid'}),
+                html.Div([], className='one columns'),
+             
+            ])
+        ]),
     ])
 
         
