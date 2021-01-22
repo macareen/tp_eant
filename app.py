@@ -161,12 +161,12 @@ dcc.Tabs
 
 
 def update_fig(selected_value):
-figura1 = px.scatter(df[df['ambientes'].isin(selected_value)], 
+  figura1 = px.scatter(df[df['ambientes'].isin(selected_value)], 
                                    x="precio_prom", y="area", color="comuna", hover_data=['barrio'],
                            labels={ "precio_prom": "Precio Promedio del m2 (USD)" ,
                                     "area": "Área de Espacio Verde Público"},
                           title="Precio promedio según área verde en la comuna")
-    return figura1
+  return figura1
 
 
 if __name__ == '__main__':
