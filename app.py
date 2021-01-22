@@ -94,19 +94,23 @@ app.layout = html.Div([
     html.H1('Precio de las propiedades en CABA: Qué factores influyen?'), 
 dcc.Tabs
     ([
-        dcc.Tab(id='Tab1', label='Introducción',  children=
-                [ html.Img(src=app.get_asset_url('undraw_map_1r69.png'), style={'height':'40%', 'width':'40%'}),
-                 dcc.Markdown('''
-                  A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. 
-                  Es posible que nos guiemos por buscar en la zona en la que crecimos, o la que nos queda más cerca del trabajo. 
-                  El precio suele ser un factor clave, tanto a la hora de comprar como de elegir un alquiler, 
-                  pero a su vez el mismo se ve influenciado por otras cuestiones, que no siempre resultan claras, 
-                  y que muchas veces dificultan la elección al presentar disyuntivas.
-                  En este trabajo, realizado en el marco del curso Python Data Analytics de la Escuela Argentina de Nuevas Tecnologías [(EANT) ](https://eant.tech/escuela-de-ciencias-de-datos) 
-                  y utilizando los [datos abiertos del Gobierno de la Ciudad de Buenos Aires](https://data.buenosaires.gob.ar/), 
-                  proponemos que dos de los factores que influencian el valor de las propiedades de dos y tres ambientes de la Ciudad Autónoma de Buenos Aires 
-                  son los medios de transporte disponibles y el fácil acceso a espacios verdes públicos como parques y plazas.
-                  ''')]),
+                dcc.Tab(id='Tab1', label='Introducción',  children=
+                            [html.Div([ 
+                              html.Div([html.Img(src=app.get_asset_url('undraw_map_1r69.png'), style={'height':'40%', 'width':'40%'})], className='two columns'),
+                              html.Div([
+                                        dcc.Markdown('''
+                                          A la hora de elegir un lugar para vivir, muchos factores influencian nuestra decisión. 
+                                          Es posible que nos guiemos por buscar en la zona en la que crecimos, o la que nos queda más cerca del trabajo. 
+                                          El precio suele ser un factor clave, tanto a la hora de comprar como de elegir un alquiler, 
+                                          pero a su vez el mismo se ve influenciado por otras cuestiones, que no siempre resultan claras, 
+                                          y que muchas veces dificultan la elección al presentar disyuntivas.
+                                          En este trabajo, realizado en el marco del curso Python Data Analytics de la Escuela Argentina de Nuevas Tecnologías [(EANT) ](https://eant.tech/escuela-de-ciencias-de-datos) 
+                                          y utilizando los [datos abiertos del Gobierno de la Ciudad de Buenos Aires](https://data.buenosaires.gob.ar/), 
+                                          proponemos que  dos de los factores que influencian el valor de las propiedades de dos y tres ambientes de la Ciudad Autónoma de Buenos Aires 
+                                          son los medios de transporte disponibles y el fácil acceso a espacios verdes públicos como parques y plazas.
+                                          ''')
+                                ], className='two columns')
+                                    ])]),
       
       
         dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600'),
