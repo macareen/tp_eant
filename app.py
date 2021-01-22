@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@macareen 
+macareen
+/
+tp_eant3
+1
+11
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+tp_eant3/app.py /
+@macareen
+macareen Update app.py
+Latest commit ff9ef78 1 hour ago
+ History
+ 1 contributor
+194 lines (142 sloc)  9.54 KB
+  
 import os
 import dash
 import dash_core_components as dcc
@@ -120,28 +151,16 @@ dcc.Tabs
             ])
         ]),
 
-     
       
-                    dcc.Tab(id='Tab3', label='Mapa',  children=[
-            
-            html.Div([
-                html.Div([], className='one columns'),
-                 
-                html.Div([
-                    html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='100%',height='600')
-                    
-                ], className='five columns',style={'border':'0px black solid'}), 
-              html.Div([html.Iframe(id='map2',srcDoc=open('mapa3.html','r').read(),width='100%',height='600')], className='five columns', style={'border':'0px black solid'}),
-                html.Div([], className='one columns'),
-             
-            ]),
-                dash_table.DataTable(
-                id='table',
-                columns=[{"name": i, "id": i} for i in df_ev2.columns],
-                data=df_ev2.to_dict('records'),sort_action='native',
-                )
-        ]),
       
+        dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600'),
+                                                   html.Iframe(id='map2',srcDoc=open('mapa3.html','r').read(),width='50%',height='600'),
+                                                  
+                                                  dash_table.DataTable(
+    id='table',
+    columns=[{"name": i, "id": i} for i in df_ev2.columns],
+    data=df_ev2.to_dict('records'),sort_action='native',
+)]),
         dcc.Tab(id='Tab2', label='Gráficos',  children=[
 
               html.Div([
@@ -204,3 +223,15 @@ def update_fig(selected_value):
 
 if __name__ == '__main__':
     app.run_server()
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
