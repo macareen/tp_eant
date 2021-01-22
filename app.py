@@ -153,7 +153,7 @@ dcc.Tabs
 
         
 ]) 
-])
+
 
 @app.callback(
     Output(component_id='graph_1', component_property='figure'),
