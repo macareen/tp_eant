@@ -1,34 +1,4 @@
-Skip to content
-Search or jump to…
 
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@macareen 
-macareen
-/
-tp_eant3
-1
-11
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-tp_eant3/app.py /
-@macareen
-macareen Update app.py
-Latest commit ff9ef78 1 hour ago
- History
- 1 contributor
-194 lines (142 sloc)  9.54 KB
-  
 import os
 import dash
 import dash_core_components as dcc
@@ -223,15 +193,3 @@ def update_fig(selected_value):
 
 if __name__ == '__main__':
     app.run_server()
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
