@@ -120,16 +120,28 @@ dcc.Tabs
             ])
         ]),
 
+     
       
+                    dcc.Tab(id='Tab3', label='Mapa',  children=[
+            
+            html.Div([
+                html.Div([], className='one columns'),
+                 
+                html.Div([
+                    html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600')
+                    
+                ], className='five columns',style={'border':'0px black solid'}), 
+              html.Div([html.Iframe(id='map2',srcDoc=open('mapa3.html','r').read(),width='50%',height='600')], className='five columns', style={'border':'0px black solid'}),
+                html.Div([], className='one columns'),
+             
+            ]),
+                dash_table.DataTable(
+                id='table',
+                columns=[{"name": i, "id": i} for i in df_ev2.columns],
+                data=df_ev2.to_dict('records'),sort_action='native',
+                )
+        ]),
       
-        dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600'),
-                                                   html.Iframe(id='map2',srcDoc=open('mapa3.html','r').read(),width='50%',height='600'),
-                                                  
-                                                  dash_table.DataTable(
-    id='table',
-    columns=[{"name": i, "id": i} for i in df_ev2.columns],
-    data=df_ev2.to_dict('records'),sort_action='native',
-)]),
         dcc.Tab(id='Tab2', label='Gráficos',  children=[
 
               html.Div([
