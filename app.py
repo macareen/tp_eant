@@ -77,8 +77,8 @@ prop =px.bar(data_frame=temp,x='barrio',y='precio_prom',
 df=df_ev
 
 ########### Initiate the app
-#external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-external_stylesheets = ['https://codepen.io/saisubrahmanyamjanapati/pen/WNNOYLZ.css']
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+#external_stylesheets = ['https://codepen.io/saisubrahmanyamjanapati/pen/WNNOYLZ.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
@@ -94,7 +94,7 @@ app.layout = html.Div([
     html.H1('Precio de las propiedades en CABA: Qué factores influyen?'), 
 dcc.Tabs
     ([
-                html.Div(children=[
+                
     dcc.Tab(id='Tab1', label='Introducción',  children=[
             html.H1('Introducción'),
             html.Div([
@@ -118,8 +118,7 @@ dcc.Tabs
                 ], className='five columns',style={'border':'1px black solid'}), 
                 html.Div([], className='one columns'),
             ])
-        ])
-]),
+        ]),
 
       
       
