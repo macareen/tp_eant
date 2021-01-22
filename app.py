@@ -161,13 +161,13 @@ dcc.Tabs
 
 
 def update_fig(selected_value):
-    
-    figura1 = px.scatter(df[df['ambientes'].isin(selected_value)],
-                     x='precio_prom', 
-                     y='area', 
-                     color='comuna',
-                     color_discrete_map=color_discrete_map,
-                     hover_name='barrio')
+  
+  figura1 = px.scatter(df_ev[df_ev['ambientes'].isin(selected_value)], 
+                           x="precio_prom", y="area", color="comuna", hover_data=['barrio'],
+                   labels={ "precio_prom": "Precio Promedio del m2 (USD)" ,
+                            "area": "Área de Espacio Verde Público"},
+                  title="Precio promedio según área verde en la comuna")
+
 
     return figura1
 
