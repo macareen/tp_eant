@@ -94,8 +94,7 @@ app.layout = html.Div([
     html.H1('Precio de las propiedades en CABA: Qué factores influyen?'), 
 dcc.Tabs
     ([
-                dcc.Tab(id='Tab1', label='Introducción',  children=
-                            [html.Div(children=[
+                html.Div(children=[
     dcc.Tab(id='Tab1', label='Introducción',  children=[
             html.H1('Introducción'),
             html.Div([
@@ -121,6 +120,7 @@ dcc.Tabs
             ])
         ])
 ]),
+
       
       
         dcc.Tab(id='Tab3', label='Mapa', children=[html.Iframe(id='map',srcDoc=open('mapa.html','r').read(),width='50%',height='600'),
